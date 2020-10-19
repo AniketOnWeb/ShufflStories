@@ -1,0 +1,63 @@
+{
+  "name": "Shuffl",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "lint": "eslint \"**/*.{js,jsx}\" --quiet",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build src/index.html --public-url ./"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "prettier": "^1.19.1",
+    "sass": "^1.23.7"
+  },
+  "dependencies": {
+    "@barba/core": "^2.9.7",
+    "@material-ui/core": "^4.9.10",
+    "@material-ui/icons": "^4.5.1",
+    "@material-ui/lab": "^4.0.0-alpha.49",
+    "@material-ui/pickers": "^3.2.8",
+    "@material-ui/styles": "^4.7.1",
+    "@sendgrid/mail": "^7.2.4",
+    "@types/react": "^16.9.45",
+    "aos": "^2.3.4",
+    "async": "^3.2.0",
+    "axios": "^0.19.2",
+    "dotenv": "^6.2.0",
+    "parcel-bundler": "^1.12.4",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-google-recaptcha": "^2.1.0",
+    "react-native-smtp-mailer": "^1.2.2",
+    "react-router-dom": "^5.2.0",
+    "react-router-last-location": "^2.0.1",
+    "react-scripts": "^3.3.0",
+    "react-spring": "^8.0.27",
+    "react-transition-group": "^4.4.1",
+    "sass": "^1.23.7",
+    "smooth-scrollbar": "^8.5.3",
+    "styled-components": "^4.4.1"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 ChromeAndroid versions",
+    "last 2 Firefox versions",
+    "last 2 FirefoxAndroid versions",
+    "last 2 Safari versions",
+    "last 2 iOS versions",
+    "last 2 Edge versions",
+    "last 2 Opera versions",
+    "last 2 OperaMobile versions"
+  ]
+}
