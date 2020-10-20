@@ -1,22 +1,12 @@
-import {
-  Box,
-  makeStyles,
-  useTheme,
-  useMediaQuery,
-  Fade,
-  Typography,
-} from "@material-ui/core";
+import { Box, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/styles";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
+import { animated, config, useSpring } from "react-spring";
 import Scrollbar from "smooth-scrollbar";
-import Navbar from "./Components/Sections/Navbar";
 import Hero from "./Components/Pages/Hero";
-import About from "./Components/Pages/About";
-import Loader from "./Components/Pages/Loader";
-import { useTransition, animated, config, useSpring } from "react-spring";
-import Skills from "./Components/Pages/Skills";
+import Navbar from "./Components/Sections/Navbar";
 
 const useStyles = makeStyles((theme) => ({
   heroBackground: {
@@ -42,9 +32,15 @@ const useStyles = makeStyles((theme) => ({
   headerTitle: {
     fontSize: "9rem",
     fontWeight: "bolder",
-    // color: "#acacac",
     color: "#564eff",
-    fontFamily: "oswald",
+    fontFamily: "DM Sans",
+  },
+  heroContainer: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "100%",
   },
 }));
 
@@ -70,20 +66,10 @@ const App = (props) => {
 
   const HeroSpring = useSpring({
     config: config.slow,
-    // delay: 2700,
     delay: 200,
     opacity: 1,
     transform: "translateY(0px)",
     from: { opacity: 0, transform: "translateY(3rem)" },
-  });
-
-  const NavbarSpring = useSpring({
-    config: config.slow,
-    // delay: 2700,
-    delay: 200,
-    opacity: 1,
-    transform: "translateY(0px)",
-    from: { opacity: 0, transform: "translateY(-2rem)" },
   });
 
   return (
@@ -97,33 +83,34 @@ const App = (props) => {
             alignItems="center"
           >
             <Box
+              // style={{
+              //   width: "100%",
+              //   maxWidth: "1280px",
+              //   height: "100vh",
+
+              // }}
               style={{
+                maxWidth: matches1280
+                  ? "1280px"
+                  : matches1024
+                  ? "1024px"
+                  : matches768
+                  ? "768px"
+                  : matches640
+                  ? "640px"
+                  : "",
                 width: "100%",
-                maxWidth: "1280px",
-                width: "100%",
+                height: "100vh",
+                position: "relative",
               }}
             >
-              <AnimatedBox style={NavbarSpring}>
+              <AnimatedBox>
                 <Navbar />
               </AnimatedBox>
 
-              <AnimatedBox style={HeroSpring}>
-                <Box
-                  mt="16rem"
-                  height="45rem"
-                  // alignItems="center"
-                  // justifyContent="center"
-                  // height="calc(100vh - 8rem)"
-                >
-                  <Hero />
-                </Box>
-                <Box mt="12rem">
-                  <About />
-                </Box>
+              <AnimatedBox className={classes.heroContainer}>
+                <Hero />
               </AnimatedBox>
-              <Box>
-                <Skills />
-              </Box>
             </Box>
           </Box>
         </ThemeProvider>

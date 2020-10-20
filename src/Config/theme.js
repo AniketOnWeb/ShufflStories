@@ -1,7 +1,7 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
 const colorPreset = {
-  primary: "#564eff",
+  primary: "#56CCF2",
   secondary: "#69cdff",
   elevation6: "#1f1f1f",
   elevation12: "#2d2d2d",
@@ -13,13 +13,13 @@ const colorPreset = {
   contrast: "#fff",
   neutral: "#a5b3cb",
   success: "#03ae73",
-  error: "#c24040",
-  warning: "#df7833",
-  base: "#110f15",
-  highEmphasis: "rgba(235, 235, 245, 0.9)",
+  error: "#EB5757",
+  warning: "#F2C94C",
+  base: "#212121",
+  highEmphasis: "#FCFCFC",
   ExtrahighEmphasisDark: "#ffffff",
-  mediumEmphasisDark: "hsla(0, 0%, 100%, 0.4)",
-  lowEmphasisDark: "#2c2c2e",
+  mediumEmphasisDark: "#999999",
+  lowEmphasisDark: "#666666",
   patientPrimary: "#094e87",
   baseDark1: "#2f2f2f",
 
@@ -36,7 +36,7 @@ const colorPreset = {
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: "Montserrat",
+    fontFamily: "DM Sans",
   },
 
   breakpoints: {
