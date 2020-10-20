@@ -7,6 +7,7 @@ import { animated, config, useSpring } from "react-spring";
 import Scrollbar from "smooth-scrollbar";
 import Hero from "./Components/Pages/Hero";
 import Navbar from "./Components/Sections/Navbar";
+import Footer from "./Components/Sections/Footer";
 
 const useStyles = makeStyles((theme) => ({
   heroBackground: {
@@ -40,6 +41,13 @@ const useStyles = makeStyles((theme) => ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
+    width: "100%",
+  },
+  footerContainer: {
+    position: "absolute",
+    bottom: "4rem",
+    left: "50%",
+    transform: "translateX(-50%)",
     width: "100%",
   },
 }));
@@ -110,6 +118,9 @@ const App = (props) => {
 
               <AnimatedBox className={classes.heroContainer}>
                 <Hero />
+              </AnimatedBox>
+              <AnimatedBox className={classes.footerContainer}>
+                <Footer />
               </AnimatedBox>
             </Box>
           </Box>

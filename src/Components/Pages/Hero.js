@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import logoSvgData from "../../Common/animateSuccess.json";
 import image from "../Pages/img.png";
 import clsx from "clsx";
+import CustomSvg from "../../Common/CustomSvg";
 
 const useStyles = makeStyles((theme) => ({
   regularHigh12: theme.regularHigh12,
@@ -43,6 +44,44 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "right",
     animation: `$animate .8s steps(28) 1`,
   },
+
+  reloadWrapper: {
+    width: "4.1rem",
+    height: "4.1rem",
+    position: "relative",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    cursor: "pointer",
+    transition: "all .2s ease-in-out",
+    "&:active": {
+      transform: "scale(.9)",
+    },
+
+    "&::before": {
+      position: "absolute",
+      content: "''",
+      height: "100%",
+      backgroundColor: theme.colorPreset.warning,
+      width: "100%",
+      zIndex: -1,
+      opacity: 0.2,
+      borderRadius: "50%",
+    },
+  },
+
+  rotateClass: {
+    animation: `$rotate .8s`,
+  },
+  "@keyframes rotate": {
+    "0%": {
+      transform: "rotate(0deg)",
+    },
+    "100%": {
+      transform: "rotate(360deg)",
+    },
+  },
+
   "@keyframes animate": {
     "0%": {
       backgroundPosition: "left",
@@ -59,10 +98,19 @@ const Hero = () => {
   const [buttonPressed, setbuttonPressed] = useState(false);
 
   const [addClass, setaddClass] = useState(false);
+  const [getStories, setgetStories] = useState(false);
 
   const handleClick = () => {
     setaddClass(!addClass);
   };
+
+  useEffect(() => {
+    if (getStories === true) {
+      setTimeout(() => {
+        setgetStories(false);
+      }, 800);
+    }
+  }, [getStories]);
 
   return (
     <Box padding="0 5rem" className={classes.heroWrapper}>
@@ -79,7 +127,15 @@ const Hero = () => {
             Aadhitya, 23 • Product Designer
           </Typography>
         </Box>
-        <Box ml="1rem">
+        <Box
+          ml="2.4rem"
+          style={{
+            height: "2rem",
+            backgroundColor: theme.colorPreset.lowEmphasisDark,
+            width: ".1rem",
+          }}
+        ></Box>
+        <Box ml="-1rem">
           <Box
             className={clsx(addClass ? classes.heartActive : "")}
             onClick={() => handleClick()}
@@ -94,13 +150,38 @@ const Hero = () => {
           </Box>
         </Box>
       </Box>
+
+      <Box
+        mt="6rem"
+        display="flex"
+        flexDirection="row"
+        alignItems="center"
+        alignSelf="center"
+      >
+        <Box
+          className={clsx(classes.reloadWrapper, {
+            [classes.rotateClass]: getStories,
+          })}
+          onClick={() => setgetStories(true)}
+        >
+          <CustomSvg
+            type="reload"
+            width="1.9rem"
+            height="1.9rem"
+            fill="#F2C94C"
+          />
+        </Box>
+        <Box ml="1.2rem">
+          <Typography
+            className={classes.subText}
+            style={{ color: theme.colorPreset.warning }}
+          >
+            shuffl stories
+          </Typography>
+        </Box>
+      </Box>
     </Box>
   );
 };
 
 export default Hero;
-
-//  <span
-//    className={clsx(addClass ? classes.heartActive: "", classes.heartClass)}
-//    id="heart"
-//  ></span>;

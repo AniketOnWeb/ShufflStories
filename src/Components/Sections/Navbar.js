@@ -18,8 +18,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     alignItems: "center",
     position: "relative",
-    height: "8rem",
-    padding: "0 5rem",
+    padding: "4rem 5rem",
 
     "&::before": {
       position: "absolute",
