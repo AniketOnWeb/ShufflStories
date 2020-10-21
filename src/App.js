@@ -2,12 +2,13 @@ import { Box, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/styles";
 import React, { useEffect, useState } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { animated, config, useSpring } from "react-spring";
 import Scrollbar from "smooth-scrollbar";
 import Hero from "./Components/Pages/Hero";
 import Navbar from "./Components/Sections/Navbar";
 import Footer from "./Components/Sections/Footer";
+import Form from "./Components/Pages/Form";
 
 const useStyles = makeStyles((theme) => ({
   heroBackground: {
@@ -50,6 +51,9 @@ const useStyles = makeStyles((theme) => ({
     transform: "translateX(-50%)",
     width: "100%",
   },
+  formContainer: {
+    marginTop: "5.7rem",
+  },
 }));
 
 const App = (props) => {
@@ -91,12 +95,6 @@ const App = (props) => {
             alignItems="center"
           >
             <Box
-              // style={{
-              //   width: "100%",
-              //   maxWidth: "1280px",
-              //   height: "100vh",
-
-              // }}
               style={{
                 maxWidth: matches1280
                   ? "1280px"
@@ -112,13 +110,22 @@ const App = (props) => {
                 position: "relative",
               }}
             >
-              <AnimatedBox>
-                <Navbar />
-              </AnimatedBox>
+              <Route path="/" exact>
+                <AnimatedBox>
+                  <Navbar />
+                </AnimatedBox>
 
-              <AnimatedBox className={classes.heroContainer}>
-                <Hero />
-              </AnimatedBox>
+                <AnimatedBox className={classes.heroContainer}>
+                  <Hero />
+                </AnimatedBox>
+              </Route>
+
+              <Route path="/submit">
+                <AnimatedBox className={classes.formContainer}>
+                  <Form />
+                </AnimatedBox>
+              </Route>
+
               <AnimatedBox className={classes.footerContainer}>
                 <Footer />
               </AnimatedBox>
