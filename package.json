@@ -47,7 +47,8 @@
     "react-transition-group": "^4.4.1",
     "sass": "^1.23.7",
     "smooth-scrollbar": "^8.5.3",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "unique-names-generator": "^4.3.1"
   },
   "browserslist": [
     "last 2 Chrome versions",

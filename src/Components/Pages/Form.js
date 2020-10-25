@@ -5,13 +5,23 @@ import {
   Typography,
   TextField,
   fade,
+  Button,
 } from "@material-ui/core";
 import React, { useState, useEffect, useCallback } from "react";
 import clsx from "clsx";
 import CustomSvg from "../../Common/CustomSvg";
+const {
+  uniqueNamesGenerator,
+  adjectives,
+  colors,
+  animals,
+  names,
+  starWars,
+} = require("unique-names-generator");
 
 const useStyles = makeStyles((theme) => ({
   regularHigh12: theme.regularHigh12,
+  primaryButton: theme.primaryButton,
   heroText: {
     lineHeight: "5.5rem",
     fontSize: "3.5rem",
@@ -42,6 +52,29 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.6rem",
     lineHeight: "4rem",
     color: "#9c9c9c",
+  },
+  randomNamesContainer: {
+    fontWeight: 400,
+    backgroundColor: fade("#4B432A", 0.2),
+    position: "absolute",
+    transform: "translateX(29rem)",
+    height: "5.6rem",
+    right: 0,
+    borderRadius: "1.2rem",
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "row",
+    padding: "0 1.6rem",
+    textTransform: "unset",
+    transition: "all .2s ease",
+
+    "&:hover": {
+      backgroundColor: fade("#4B432A", 0.2),
+      transform: "translateX(29rem)",
+    },
+    "&:active": {
+      transform: "translateX(29rem) scale(.98)",
+    },
   },
 }));
 
@@ -125,11 +158,27 @@ const Form = () => {
     },
     [Story]
   );
+
+  const genarateRandomNames = useCallback(
+    (e) => {
+      let name = uniqueNamesGenerator({
+        dictionaries: [names],
+        length: 1,
+      });
+      setName(name);
+    },
+    [Name]
+  );
+
   return (
     <Box padding="0 10.1vw" className={classes.heroWrapper}>
       <Typography
         className={classes.heroText}
-        style={{ fontSize: "4rem", lineHeight: "6rem", letterSpacing: "0" }}
+        style={{
+          fontSize: "4rem",
+          lineHeight: "6rem",
+          letterSpacing: "0",
+        }}
       >
         Submit your story
       </Typography>
@@ -154,6 +203,35 @@ const Form = () => {
             InputProps={{
               disableUnderline: true,
               classes: inputFieldClasses,
+              endAdornment: (
+                <Button
+                  className={classes.randomNamesContainer}
+                  style={{
+                    color: theme.colorPreset.warning,
+                  }}
+                  onClick={() => genarateRandomNames()}
+                >
+                  <Typography
+                    className={classes.regularHigh12}
+                    style={{
+                      color: theme.colorPreset.warning,
+                      fontWeight: 400,
+                      fontSize: "1.8rem",
+                      lineHeight: "3rem",
+                    }}
+                  >
+                    Genarate Random Names
+                  </Typography>
+                  <Box ml=".8rem">
+                    <CustomSvg
+                      type="dice"
+                      width="1.6rem"
+                      height="1.6rem"
+                      fill={theme.colorPreset.warning}
+                    />{" "}
+                  </Box>
+                </Button>
+              ),
             }}
           />
         </Box>
@@ -228,6 +306,19 @@ const Form = () => {
               multiline: true,
             }}
           />
+        </Box>
+        <Box mt="4.8rem">
+          <Button
+            className={classes.primaryButton}
+            style={{ borderRadius: "1.2rem" }}
+          >
+            <Typography
+              className={classes.regularHigh12}
+              style={{ fontSize: "1.82rem" }}
+            >
+              Submit
+            </Typography>
+          </Button>
         </Box>
       </Box>
     </Box>

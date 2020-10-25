@@ -1,7 +1,7 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
 const colorPreset = {
-  primary: "#56CCF2",
+  primary: "#2D9CDB",
   secondary: "#69cdff",
   elevation6: "#1f1f1f",
   elevation12: "#2d2d2d",
@@ -86,6 +86,28 @@ const theme = createMuiTheme({
     elavationLess: colorPreset.elavationLess,
   },
 
+  primaryButton: {
+    width: "19rem",
+    height: "5rem",
+    boxShadow: "none",
+    textTransform: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    cursor: "pointer",
+    minWidth: "unset",
+    backgroundColor: colorPreset.primary,
+    transition: "all .2s ease",
+    borderRadius: "0",
+
+    "&:hover": {
+      backgroundColor: colorPreset.primary,
+      transform: "scale(1.02)",
+    },
+    "&:active": {
+      transform: "scale(.98)",
+    },
+  },
   mediumTextDark12: {
     fontSize: "2rem",
     fontWeight: 800,
@@ -106,28 +128,6 @@ const theme = createMuiTheme({
     color: colorPreset.mediumEmphasisDark,
     lineHeight: "3rem",
     letterSpacing: "0.03rem",
-  },
-  primaryButton: {
-    width: "15rem",
-    height: "4.2rem",
-    boxShadow: "none",
-    textTransform: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    cursor: "pointer",
-    minWidth: "unset",
-    backgroundColor: colorPreset.primary,
-    transition: "all .2s ease",
-    borderRadius: "0",
-
-    "&:hover": {
-      backgroundColor: colorPreset.primary,
-      transform: "scale(1.05)",
-    },
-    "&:active": {
-      transform: "scale(1)",
-    },
   },
 
   regularDisabled12: {
