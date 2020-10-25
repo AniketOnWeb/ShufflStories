@@ -13,6 +13,22 @@ const styles = (theme) => ({
     html: {
       fontSize: 10,
       scrollBehavior: "smooth",
+
+      [theme.breakpoints.up("sd")]: {
+        fontSize: 11,
+      },
+      [theme.breakpoints.up("MacScaled")]: {
+        fontSize: 11,
+      },
+      [theme.breakpoints.up("md")]: {
+        fontSize: 12,
+      },
+      [theme.breakpoints.up("lg")]: {
+        fontSize: 15,
+      },
+      [theme.breakpoints.up("xl")]: {
+        fontSize: 20,
+      },
     },
     body: {
       backgroundColor: theme.colorPreset.base,
