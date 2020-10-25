@@ -5,13 +5,6 @@ import CustomSvg from "../../Common/CustomSvg";
 
 const useStyles = makeStyles((theme) => ({
   regularHigh12: theme.regularHigh12,
-  heroText: {
-    lineHeight: "5.5rem",
-    fontSize: "3.5rem",
-    fontWeight: "400",
-    color: theme.colorPreset.highEmphasis,
-    // textAlign: "center",
-  },
 
   heroWrapper: {
     display: "flex",
@@ -23,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     lineHeight: "2rem",
     letterSpacing: "0",
-    fontSize: "2.4rem",
+    fontSize: "2rem",
     color: theme.colorPreset.lowEmphasisDark,
     fontWeight: "400",
   },
@@ -32,7 +25,7 @@ const Footer = () => {
   const theme = useTheme();
   const classes = useStyles(theme);
   return (
-    <Box padding="0 5rem" className={classes.heroWrapper}>
+    <Box padding="0 15.5rem" className={classes.heroWrapper}>
       <Box>
         <Typography className={classes.normalText}>Home</Typography>
       </Box>

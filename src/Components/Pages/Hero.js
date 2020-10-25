@@ -8,15 +8,15 @@ import CustomSvg from "../../Common/CustomSvg";
 const useStyles = makeStyles((theme) => ({
   regularHigh12: theme.regularHigh12,
   heroText: {
-    lineHeight: "5.5rem",
-    fontSize: "3.5rem",
+    lineHeight: "4.5rem",
+    fontSize: "2.6rem",
     fontWeight: "400",
     color: theme.colorPreset.highEmphasis,
     // textAlign: "center",
   },
   subText: {
     lineHeight: "5.5rem",
-    fontSize: "2.4rem",
+    fontSize: "2rem",
     fontWeight: "400",
     color: theme.colorPreset.primary,
     textAlign: "center",
@@ -35,8 +35,8 @@ const useStyles = makeStyles((theme) => ({
     background: `url(${image}) no-repeat`,
     backgroundPosition: "left",
     backgroundSize: "2900%",
-    height: "6rem",
-    width: "10rem",
+    height: "4rem",
+    width: "7rem",
   },
 
   heartActive: {
@@ -46,8 +46,8 @@ const useStyles = makeStyles((theme) => ({
   },
 
   reloadWrapper: {
-    width: "4.1rem",
-    height: "4.1rem",
+    width: "3.5rem",
+    height: "3.5rem",
     position: "relative",
     display: "flex",
     alignItems: "center",
@@ -90,6 +90,14 @@ const useStyles = makeStyles((theme) => ({
       backgroundPosition: "right",
     },
   },
+  heroContainer: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    // marginTop: "12.8rem",
+    width: "100%",
+  },
 }));
 const Hero = () => {
   const theme = useTheme();
@@ -113,74 +121,77 @@ const Hero = () => {
   }, [getStories]);
 
   return (
-    <Box padding="0 5rem" className={classes.heroWrapper}>
-      <Box>
-        <Typography className={classes.heroText}>
-          “My lowest moment was when I was 16 and preparing for CAT. I thought
-          it was the end of the world. My friends supported me and I am glad I
-          listened to them. I am grateful for the life I have.”
-        </Typography>
-      </Box>
-      <Box mt="2.4rem" className={classes.detailsWrapper}>
-        <Box>
-          <Typography className={classes.subText}>
-            Aadhitya, 23 • Product Designer
-          </Typography>
-        </Box>
-        <Box
-          ml="2.4rem"
-          style={{
-            height: "2rem",
-            backgroundColor: theme.colorPreset.lowEmphasisDark,
-            width: ".1rem",
-          }}
-        ></Box>
-        <Box ml="-1rem">
+    <React.Fragment>
+      <Box className={classes.heroContainer}>
+        <Box padding="0 27.2rem" className={classes.heroWrapper}>
+          <Box>
+            <Typography className={classes.heroText}>
+              “My lowest moment was when I was 16 and preparing for CAT. I
+              thought it was the end of the world. My friends supported me and I
+              am glad I listened to them. I am grateful for the life I have.”
+            </Typography>
+          </Box>
+          <Box mt="2.4rem" className={classes.detailsWrapper}>
+            <Box>
+              <Typography className={classes.subText}>
+                Aadhitya, 23 • Product Designer
+              </Typography>
+            </Box>
+            <Box
+              ml="2.4rem"
+              style={{
+                height: "2rem",
+                backgroundColor: theme.colorPreset.lowEmphasisDark,
+                width: ".1rem",
+              }}
+            ></Box>
+            <Box ml="-.06rem">
+              <Box
+                className={clsx(addClass ? classes.heartActive : "")}
+                onClick={() => handleClick()}
+                style={{ cursor: "pointer" }}
+              >
+                <Box
+                  className={clsx(
+                    addClass ? classes.heartActive : "",
+                    classes.heartClass
+                  )}
+                ></Box>
+              </Box>
+            </Box>
+          </Box>
           <Box
-            className={clsx(addClass ? classes.heartActive : "")}
-            onClick={() => handleClick()}
-            style={{ cursor: "pointer" }}
+            mt="2rem"
+            display="flex"
+            flexDirection="row"
+            alignItems="center"
+            alignSelf="center"
           >
             <Box
-              className={clsx(
-                addClass ? classes.heartActive : "",
-                classes.heartClass
-              )}
-            ></Box>
+              className={clsx(classes.reloadWrapper, {
+                [classes.rotateClass]: getStories,
+              })}
+              onClick={() => setgetStories(true)}
+            >
+              <CustomSvg
+                type="reload"
+                width="1.9rem"
+                height="1.9rem"
+                fill="#F2C94C"
+              />
+            </Box>
+            <Box ml="1.2rem">
+              <Typography
+                className={classes.subText}
+                style={{ color: theme.colorPreset.warning }}
+              >
+                shuffl stories
+              </Typography>
+            </Box>
           </Box>
         </Box>
       </Box>
-
-      <Box
-        mt="6rem"
-        display="flex"
-        flexDirection="row"
-        alignItems="center"
-        alignSelf="center"
-      >
-        <Box
-          className={clsx(classes.reloadWrapper, {
-            [classes.rotateClass]: getStories,
-          })}
-          onClick={() => setgetStories(true)}
-        >
-          <CustomSvg
-            type="reload"
-            width="1.9rem"
-            height="1.9rem"
-            fill="#F2C94C"
-          />
-        </Box>
-        <Box ml="1.2rem">
-          <Typography
-            className={classes.subText}
-            style={{ color: theme.colorPreset.warning }}
-          >
-            shuffl stories
-          </Typography>
-        </Box>
-      </Box>
-    </Box>
+    </React.Fragment>
   );
 };
 

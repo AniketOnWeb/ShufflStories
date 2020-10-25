@@ -37,13 +37,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#564eff",
     fontFamily: "DM Sans",
   },
-  heroContainer: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "100%",
-  },
+
   footerContainer: {
     position: "absolute",
     bottom: "4rem",
@@ -96,15 +90,15 @@ const App = (props) => {
           >
             <Box
               style={{
-                maxWidth: matches1280
-                  ? "1280px"
-                  : matches1024
-                  ? "1024px"
-                  : matches768
-                  ? "768px"
-                  : matches640
-                  ? "640px"
-                  : "",
+                // maxWidth: matches1280
+                //   ? "1280px"
+                //   : matches1024
+                //   ? "1024px"
+                //   : matches768
+                //   ? "768px"
+                //   : matches640
+                //   ? "640px"
+                //   : "",
                 width: "100%",
                 height: "100vh",
                 position: "relative",
@@ -115,7 +109,7 @@ const App = (props) => {
                   <Navbar />
                 </AnimatedBox>
 
-                <AnimatedBox className={classes.heroContainer}>
+                <AnimatedBox>
                   <Hero />
                 </AnimatedBox>
               </Route>

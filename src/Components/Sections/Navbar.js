@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     alignItems: "center",
     position: "relative",
-    padding: "4rem 5rem",
+    padding: "4rem 18rem 0 14rem",
 
     "&::before": {
       position: "absolute",
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     lineHeight: "2rem",
     letterSpacing: "0",
-    fontSize: "2.4rem",
+    fontSize: "2rem",
     color: theme.colorPreset.highEmphasis,
     fontWeight: "500",
     transition: "all .1s ease-in-out",
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     lineHeight: "2rem",
     letterSpacing: "0",
-    fontSize: "2.4rem",
+    fontSize: "2rem",
     color: theme.colorPreset.mediumEmphasisDark,
     fontWeight: "400",
   },

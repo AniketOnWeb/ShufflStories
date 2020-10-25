@@ -126,7 +126,7 @@ const Form = () => {
     [Story]
   );
   return (
-    <Box padding="0 5rem" className={classes.heroWrapper}>
+    <Box padding="0 10.1vw" className={classes.heroWrapper}>
       <Typography
         className={classes.heroText}
         style={{ fontSize: "4rem", lineHeight: "6rem", letterSpacing: "0" }}
