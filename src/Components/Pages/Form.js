@@ -18,6 +18,9 @@ const {
   names,
   starWars,
 } = require("unique-names-generator");
+import Firebase from "../Firebase/firebase";
+import { withRouter } from "react-router-dom";
+import app from "firebase/app";
 
 const useStyles = makeStyles((theme) => ({
   regularHigh12: theme.regularHigh12,
@@ -170,6 +173,32 @@ const Form = () => {
     [Name]
   );
 
+  const handleCreateAccount = async () => {
+    // db.collection("users")
+    //   .get()
+    //   .then((querySnapshot) => {
+    //     if (querySnapshot.docs.length && querySnapshot.docs.length > 0) {
+    //       querySnapshot.forEach((doc) => {
+    //         Firebase.register({ name: Name });
+    //       });
+    //     } else {
+    //       Firebase.register({ name: Name });
+    //     }
+    //   });
+
+    await Firebase.submitStory({
+      name: Name,
+      age: Age,
+      story: Story,
+      occupation: Occupation,
+    });
+
+    setName("");
+    setAge("");
+    setOccupation("");
+    setStory("");
+  };
+
   return (
     <Box padding="0 10.1vw" className={classes.heroWrapper}>
       <Typography
@@ -309,6 +338,7 @@ const Form = () => {
         </Box>
         <Box mt="4.8rem">
           <Button
+            onClick={() => handleCreateAccount()}
             className={classes.primaryButton}
             style={{ borderRadius: "1.2rem" }}
           >

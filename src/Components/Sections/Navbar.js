@@ -62,7 +62,12 @@ const Navbar = (props) => {
             <Typography className={classes.brandName}>shuffl;</Typography>
           </Box>
         </Box>
-        <Box display="flex" flexDirection="row" alignItems="center">
+        <Box
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          onClick={() => props.history.push("/submit")}
+        >
           <Typography className={classes.navbarOptions}>
             Submit Your Story
           </Typography>

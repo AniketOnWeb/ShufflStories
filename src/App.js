@@ -9,6 +9,7 @@ import Hero from "./Components/Pages/Hero";
 import Navbar from "./Components/Sections/Navbar";
 import Footer from "./Components/Sections/Footer";
 import Form from "./Components/Pages/Form";
+import Congrats from "./Components/Pages/Congrats";
 
 const useStyles = makeStyles((theme) => ({
   heroBackground: {
@@ -47,6 +48,15 @@ const useStyles = makeStyles((theme) => ({
   },
   formContainer: {
     marginTop: "5.7rem",
+  },
+  congratsContainer: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "100vw",
+    display: "flex",
+    justifyContent: "center",
   },
 }));
 
@@ -90,15 +100,6 @@ const App = (props) => {
           >
             <Box
               style={{
-                // maxWidth: matches1280
-                //   ? "1280px"
-                //   : matches1024
-                //   ? "1024px"
-                //   : matches768
-                //   ? "768px"
-                //   : matches640
-                //   ? "640px"
-                //   : "",
                 width: "100%",
                 height: "100vh",
                 position: "relative",
@@ -113,13 +114,16 @@ const App = (props) => {
                   <Hero />
                 </AnimatedBox>
               </Route>
-
               <Route path="/submit">
                 <AnimatedBox className={classes.formContainer}>
                   <Form />
                 </AnimatedBox>
               </Route>
-
+              <Route path="/congrats">
+                <AnimatedBox className={classes.congratsContainer}>
+                  <Congrats />
+                </AnimatedBox>
+              </Route>
               <AnimatedBox className={classes.footerContainer}>
                 <Footer />
               </AnimatedBox>

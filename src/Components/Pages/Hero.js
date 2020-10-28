@@ -4,6 +4,7 @@ import logoSvgData from "../../Common/animateSuccess.json";
 import image from "../Pages/img.png";
 import clsx from "clsx";
 import CustomSvg from "../../Common/CustomSvg";
+import app from "firebase/app";
 
 const useStyles = makeStyles((theme) => ({
   regularHigh12: theme.regularHigh12,
@@ -71,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   rotateClass: {
-    animation: `$rotate .8s`,
+    animation: `$rotate .8s infinite`,
   },
   "@keyframes rotate": {
     "0%": {
@@ -112,13 +113,38 @@ const Hero = () => {
     setaddClass(!addClass);
   };
 
+  // useEffect(() => {
+  //   if (getStories === true) {
+  //     setTimeout(() => {
+  //       setgetStories(false);
+  //     }, 800);
+  //   }
+  // }, [getStories]);
+
+  const [Name, setName] = useState("");
+  const [Age, setAge] = useState("");
+  const [Occupation, setOccupation] = useState("");
+  const [Story, setStory] = useState("");
+  // dV1ywcqzRCNbJvHBr7mP;
   useEffect(() => {
-    if (getStories === true) {
-      setTimeout(() => {
-        setgetStories(false);
-      }, 800);
-    }
-  }, [getStories]);
+    setgetStories(true);
+    app
+      .firestore()
+      .collection("Projects")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          // console.log(`${doc.id} => ${doc.data()}`);
+          if (doc.id === "dV1ywcqzRCNbJvHBr7mP") {
+            setStory(doc.data().story ? doc.data().story : "");
+            setOccupation(doc.data().occupation ? doc.data().occupation : "");
+            setAge(doc.data().age ? doc.data().age : "");
+            setName(doc.data() ? doc.data().name : "");
+          }
+          setgetStories(false);
+        });
+      });
+  }, []);
 
   return (
     <React.Fragment>
@@ -126,15 +152,18 @@ const Hero = () => {
         <Box padding="0 27.2rem" className={classes.heroWrapper}>
           <Box>
             <Typography className={classes.heroText}>
-              “My lowest moment was when I was 16 and preparing for CAT. I
-              thought it was the end of the world. My friends supported me and I
-              am glad I listened to them. I am grateful for the life I have.”
+              {Story
+                ? `“${Story}“`
+                : `“My lowest moment was when I was 16 and preparing for CAT.
+              I thought it was the end of the world. My friends supported me and
+              I am glad I listened to them. I am grateful for the life I have.”`}
             </Typography>
           </Box>
           <Box mt="2.4rem" className={classes.detailsWrapper}>
             <Box>
               <Typography className={classes.subText}>
-                Aadhitya, 23 • Product Designer
+                {Name ? Name : "Aadhitya, 23"} •{" "}
+                {Occupation ? Occupation : "Product Designer"}
               </Typography>
             </Box>
             <Box
