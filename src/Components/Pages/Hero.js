@@ -113,20 +113,16 @@ const Hero = () => {
     setaddClass(!addClass);
   };
 
-  // useEffect(() => {
-  //   if (getStories === true) {
-  //     setTimeout(() => {
-  //       setgetStories(false);
-  //     }, 800);
-  //   }
-  // }, [getStories]);
-
   const [Name, setName] = useState("");
   const [Age, setAge] = useState("");
   const [Occupation, setOccupation] = useState("");
   const [Story, setStory] = useState("");
-  // dV1ywcqzRCNbJvHBr7mP;
+
   useEffect(() => {
+    // getStoriesAPI();
+  }, []);
+
+  const getStoriesAPI = () => {
     setgetStories(true);
     app
       .firestore()
@@ -144,7 +140,7 @@ const Hero = () => {
           setgetStories(false);
         });
       });
-  }, []);
+  };
 
   return (
     <React.Fragment>
@@ -200,7 +196,7 @@ const Hero = () => {
               className={clsx(classes.reloadWrapper, {
                 [classes.rotateClass]: getStories,
               })}
-              onClick={() => setgetStories(true)}
+              onClick={() => getStoriesAPI()}
             >
               <CustomSvg
                 type="reload"

@@ -16,10 +16,11 @@ const useStyles = makeStyles((theme) => ({
   congratsWrapper: {
     display: "flex",
     flexDirection: "column",
-    width: "calc(100% - 31rem)",
     position: "relative",
     padding: "2.8rem 4.5rem 4.5rem 4.5rem",
     border: `.3rem solid ${fade("#fcfcfc", 0.1)}`,
+    width: "112.9rem",
+    height: "63rem",
   },
   brandName: {
     cursor: "pointer",
@@ -76,14 +77,42 @@ const Congrats = (props) => {
           submitting your story.
           <br />
           <br />
-          Your story gives hope to people out there who are trying their. and
-          just want to assure them that everything will be alright.
         </Typography>
+        <Box display="flex" flexDirection="row" alignItems="center">
+          <Typography
+            className={classes.subText}
+            style={{ alignSelf: "baseline" }}
+          >
+            Your story gives hope to people out there who are trying their. and
+            just want to assure them that everything will be alright.
+          </Typography>
+          <Box>
+            <CustomSvg type="certificateSVG" width="46.2rem" />
+          </Box>
+        </Box>
       </Box>
-      <Box mt="9rem">
-        <Typography className={classes.subText} style={{ color: "#56CCF2" }}>
-          Get this on your mail
-        </Typography>{" "}
+      <Box
+        display="flex"
+        flexDirection="row"
+        alignItems="center"
+        className="buttonwrapper"
+      >
+        <Box
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          position="relative"
+          mt="-7rem"
+        >
+          <Box className="button" style={{ cursor: "pointer", width: "25rem" }}>
+            <Typography
+              className={classes.subText}
+              style={{ color: "#56CCF2", whiteSpace: "nowrap" }}
+            >
+              Get this on your mail
+            </Typography>{" "}
+          </Box>
+        </Box>
       </Box>
     </Box>
   );
