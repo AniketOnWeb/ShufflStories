@@ -1,7 +1,7 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
 const colorPreset = {
-  primary: "#2D9CDB",
+  primary: "#56CCF2",
   secondary: "#69cdff",
   elevation6: "#1f1f1f",
   elevation12: "#2d2d2d",

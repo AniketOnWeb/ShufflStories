@@ -5,11 +5,15 @@ import {
   Typography,
   useTheme,
   fade,
+  Fade,
+  TextField,
+  ButtonBase,
 } from "@material-ui/core";
 import clsx from "clsx";
-import React from "react";
+import React, { useCallback } from "react";
 import { withRouter } from "react-router-dom";
 import CustomSvg from "../../Common/CustomSvg";
+import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   primaryButton: theme.primaryButton,
@@ -19,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     padding: "2.8rem 4.5rem 4.5rem 4.5rem",
     border: `.3rem solid ${fade("#fcfcfc", 0.1)}`,
-    width: "112.9rem",
+    width: "107rem",
     height: "63rem",
   },
   brandName: {
@@ -50,12 +54,83 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "400",
     color: "#fcfcfc",
   },
+  adornmentHolder: {
+    width: "calc(7rem + .4rem)",
+    height: "calc(100% + .4rem)",
+    backgroundColor: theme.colorPreset.primary,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: "0 1.2rem 1.2rem 0",
+    transform: "translateX(.2rem)",
+  },
+}));
+
+const useInputFieldClasses = makeStyles((theme) => ({
+  root: {
+    height: "100%",
+    width: "100%",
+    minHeight: "inherit",
+    transition:
+      "background-color 80ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 80ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+    borderRadius: "1.2rem",
+    "& label": {
+      transform: "none",
+    },
+    position: "relative",
+    backgroundColor: "rgb(255 255 255 / 3%)",
+    alignItems: "inherit",
+    display: "flex",
+    border: ".2rem solid transparent",
+  },
+
+  focused: {
+    border: ".2rem solid #56ccf233",
+  },
+
+  input: {
+    fontSize: "2rem !important",
+    lineHeight: "3rem",
+    fontWeight: "400 !important",
+    letterSpacing: "0.03rem",
+    color: "#9c9c9c",
+    padding: "0 1.6rem",
+
+    "&::placeholder": {
+      color: "#9c9c9c",
+      fontSize: "2rem !important",
+      lineHeight: "3rem",
+      fontWeight: "400 !important",
+      opacity: ".4 !important",
+      letterSpacing: "0.03rem",
+    },
+
+    "&::-webkit-input-placeholder": {
+      color: "#9c9c9c",
+      fontSize: "2rem !important",
+      lineHeight: "3rem",
+      fontWeight: "400 !important",
+      opacity: ".4 !important",
+      letterSpacing: "0.03rem",
+    },
+  },
 }));
 
 const Congrats = (props) => {
   const theme = useTheme();
   const classes = useStyles(theme);
+  const inputFieldClasses = useInputFieldClasses(theme);
 
+  const [emailInputShow, setemailInputShow] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
+  const [Age, setAge] = useState("");
+
+  const handleChangeAge = useCallback(
+    (e) => {
+      setAge(e.target.value);
+    },
+    [Age]
+  );
   return (
     <Box className={classes.congratsWrapper}>
       <Box display="flex" flexDirection="row" alignItems="center">
@@ -91,29 +166,80 @@ const Congrats = (props) => {
           </Box>
         </Box>
       </Box>
-      <Box
-        display="flex"
-        flexDirection="row"
-        alignItems="center"
-        className="buttonwrapper"
-      >
+
+      <Fade in={!emailInputShow}>
         <Box
           display="flex"
           flexDirection="row"
           alignItems="center"
-          position="relative"
-          mt="-7rem"
+          className="buttonwrapper"
+          onClick={() => {
+            setemailInputShow(true);
+          }}
         >
-          <Box className="button" style={{ cursor: "pointer", width: "25rem" }}>
-            <Typography
-              className={classes.subText}
-              style={{ color: "#56CCF2", whiteSpace: "nowrap" }}
+          <Box
+            display="flex"
+            flexDirection="row"
+            alignItems="center"
+            position="relative"
+            mt="-7rem"
+          >
+            <Box
+              className="button"
+              style={{ cursor: "pointer", width: "25rem" }}
+              onClick={() => setemailInputShow(true)}
             >
-              Get this on your mail
-            </Typography>{" "}
+              <Typography
+                className={classes.subText}
+                style={{ color: "#56CCF2", whiteSpace: "nowrap" }}
+              >
+                Get this on your mail
+              </Typography>{" "}
+            </Box>
           </Box>
         </Box>
-      </Box>
+      </Fade>
+
+      <Fade in={emailInputShow && !emailSent}>
+        <Box width="38rem" mt="-7rem">
+          <TextField
+            value={Age}
+            onChange={handleChangeAge}
+            placeholder="abc@example.com"
+            style={{
+              width: "100%",
+              height: "5.6rem",
+              minHeight: "5.6rem",
+              // transition: "all .2s ease-in-out",
+              alignItems: "center",
+            }}
+            InputProps={{
+              disableUnderline: true,
+              classes: inputFieldClasses,
+              endAdornment: (
+                <ButtonBase
+                  className={classes.adornmentHolder}
+                  onClick={() => setEmailSent(true)}
+                >
+                  <Box>
+                    <CustomSvg type="righArrow" width="1.2rem" fill="#fcfcfc" />
+                  </Box>
+                </ButtonBase>
+              ),
+            }}
+          />
+        </Box>
+      </Fade>
+      <Fade in={emailSent}>
+        <Box mt="-5rem">
+          <Typography
+            className={classes.subText}
+            style={{ color: "#27AE60", whiteSpace: "nowrap" }}
+          >
+            An email has been sent to your account.
+          </Typography>
+        </Box>
+      </Fade>
     </Box>
   );
 };
