@@ -212,143 +212,154 @@ const Form = () => {
         Submit your story
       </Typography>
 
-      <Box mt="6rem">
-        <Box width="100%">
-          <Box>
-            <Typography className={classes.inputLabel}>Your name</Typography>
-          </Box>
-          <TextField
-            value={Name}
-            onChange={handleChangeName}
-            placeholder="Smol Panda"
-            style={{
-              width: "41vw",
-              height: "5.6rem",
-              minHeight: "5.6rem",
-              border: ".11rem solid transparent",
-              transition: "all .2s ease-in-out",
-              alignItems: "center",
-            }}
-            InputProps={{
-              disableUnderline: true,
-              classes: inputFieldClasses,
-              endAdornment: (
-                <Button
-                  className={classes.randomNamesContainer}
-                  style={{
-                    color: theme.colorPreset.warning,
-                  }}
-                  onClick={() => genarateRandomNames()}
-                >
-                  <Typography
-                    className={classes.regularHigh12}
+      <Box mt="6rem" display="flex" alignItems="center" flexDirection="row">
+        <Box>
+          <Box width="100%">
+            <Box>
+              <Typography className={classes.inputLabel}>Your name</Typography>
+            </Box>
+            <TextField
+              value={Name}
+              onChange={handleChangeName}
+              placeholder="Smol Panda"
+              style={{
+                width: "41vw",
+                height: "5.6rem",
+                minHeight: "5.6rem",
+                border: ".11rem solid transparent",
+                transition: "all .2s ease-in-out",
+                alignItems: "center",
+              }}
+              InputProps={{
+                disableUnderline: true,
+                classes: inputFieldClasses,
+                endAdornment: (
+                  <Button
+                    className={classes.randomNamesContainer}
                     style={{
                       color: theme.colorPreset.warning,
-                      fontWeight: 400,
-                      fontSize: "1.8rem",
-                      lineHeight: "3rem",
                     }}
+                    onClick={() => genarateRandomNames()}
                   >
-                    Genarate Random Names
-                  </Typography>
-                  <Box ml=".8rem">
-                    <CustomSvg
-                      type="dice"
-                      width="1.6rem"
-                      height="1.6rem"
-                      fill={theme.colorPreset.warning}
-                    />{" "}
-                  </Box>
-                </Button>
-              ),
-            }}
-          />
-        </Box>
-        <Box width="100%" mt="6rem" width="41vw">
-          <Box display="grid" gridTemplateColumns="35fr 65fr" gridGap="2.4rem">
-            <Box>
-              <Box>
-                <Typography className={classes.inputLabel}>Your age</Typography>
-              </Box>
-              <TextField
-                value={Age}
-                onChange={handleChangeAge}
-                placeholder="Smol Panda"
-                style={{
-                  width: "100%",
-                  height: "5.6rem",
-                  minHeight: "5.6rem",
-                  border: ".11rem solid transparent",
-                  transition: "all .2s ease-in-out",
-                  alignItems: "center",
-                }}
-                InputProps={{
-                  disableUnderline: true,
-                  classes: inputFieldClasses,
-                }}
-              />
-            </Box>
-            <Box>
-              <Box>
-                <Typography className={classes.inputLabel}>
-                  Your occupation
-                </Typography>
-              </Box>
-              <TextField
-                value={Occupation}
-                onChange={handleChangeOccupation}
-                placeholder="Smol Panda"
-                style={{
-                  width: "100%",
-                  height: "5.6rem",
-                  minHeight: "5.6rem",
-                  border: ".11rem solid transparent",
-                  transition: "all .2s ease-in-out",
-                  alignItems: "center",
-                }}
-                InputProps={{
-                  disableUnderline: true,
-                  classes: inputFieldClasses,
-                }}
-              />
-            </Box>
+                    <Typography
+                      className={classes.regularHigh12}
+                      style={{
+                        color: theme.colorPreset.warning,
+                        fontWeight: 400,
+                        fontSize: "1.8rem",
+                        lineHeight: "3rem",
+                      }}
+                    >
+                      Genarate Random Names
+                    </Typography>
+                    <Box ml=".8rem">
+                      <CustomSvg
+                        type="dice"
+                        width="1.6rem"
+                        height="1.6rem"
+                        fill={theme.colorPreset.warning}
+                      />{" "}
+                    </Box>
+                  </Button>
+                ),
+              }}
+            />
           </Box>
-        </Box>
-        <Box width="100%" mt="6rem">
-          <Box>
-            <Typography className={classes.inputLabel}>Your story</Typography>
-          </Box>
-          <TextField
-            value={Story}
-            onChange={handleChangeStory}
-            placeholder="Tell us about your story. What was your lowest point in life, how things got better and where you are now. Give us a little inspiration."
-            style={{
-              width: "41vw",
-              minHeight: "15.9rem",
-              border: ".11rem solid transparent",
-              transition: "all .2s ease-in-out",
-              alignItems: "flex-start",
-            }}
-            InputProps={{
-              disableUnderline: true,
-              classes: inputFieldClasses,
-              multiline: true,
-            }}
-          />
-        </Box>
-        <Box mt="4.8rem">
-          <Button
-            onClick={() => handleCreateAccount()}
-            className={classes.primaryButton}
-            style={{ borderRadius: "1.2rem" }}
-          >
-            <Typography
-              className={classes.regularHigh12}
-              style={{ fontSize: "1.82rem" }}
+          <Box width="100%" mt="6rem" width="41vw">
+            <Box
+              display="grid"
+              gridTemplateColumns="35fr 65fr"
+              gridGap="2.4rem"
             >
-              Submit
-            </Typography>
-          </Button>
+              <Box>
+                <Box>
+                  <Typography className={classes.inputLabel}>
+                    Your age
+                  </Typography>
+                </Box>
+                <TextField
+                  value={Age}
+                  onChange={handleChangeAge}
+                  placeholder="Smol Panda"
+                  style={{
+                    width: "100%",
+                    height: "5.6rem",
+                    minHeight: "5.6rem",
+                    border: ".11rem solid transparent",
+                    transition: "all .2s ease-in-out",
+                    alignItems: "center",
+                  }}
+                  InputProps={{
+                    disableUnderline: true,
+                    classes: inputFieldClasses,
+                  }}
+                />
+              </Box>
+              <Box>
+                <Box>
+                  <Typography className={classes.inputLabel}>
+                    Your occupation
+                  </Typography>
+                </Box>
+                <TextField
+                  value={Occupation}
+                  onChange={handleChangeOccupation}
+                  placeholder="Smol Panda"
+                  style={{
+                    width: "100%",
+                    height: "5.6rem",
+                    minHeight: "5.6rem",
+                    border: ".11rem solid transparent",
+                    transition: "all .2s ease-in-out",
+                    alignItems: "center",
+                  }}
+                  InputProps={{
+                    disableUnderline: true,
+                    classes: inputFieldClasses,
+                  }}
+                />
+              </Box>
+            </Box>
+          </Box>
+          <Box width="100%" mt="6rem">
+            <Box>
+              <Typography className={classes.inputLabel}>Your story</Typography>
+            </Box>
+            <TextField
+              value={Story}
+              onChange={handleChangeStory}
+              placeholder="Tell us about your story. What was your lowest point in life, how things got better and where you are now. Give us a little inspiration."
+              style={{
+                width: "41vw",
+                minHeight: "15.9rem",
+                border: ".11rem solid transparent",
+                transition: "all .2s ease-in-out",
+                alignItems: "flex-start",
+              }}
+              InputProps={{
+                disableUnderline: true,
+                classes: inputFieldClasses,
+                multiline: true,
+              }}
+            />
+          </Box>
+          <Box mt="4.8rem">
+            <Button
+              onClick={() => handleCreateAccount()}
+              className={classes.primaryButton}
+              style={{ borderRadius: "1.2rem" }}
+            >
+              <Typography
+                className={classes.regularHigh12}
+                style={{ fontSize: "1.82rem" }}
+              >
+                Submit
+              </Typography>
+            </Button>
+          </Box>
+        </Box>
+        <Box alignSelf="flex-end">
+          <CustomSvg type="formSVG" width="53rem" />
         </Box>
       </Box>
     </Box>
