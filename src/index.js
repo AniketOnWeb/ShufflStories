@@ -11,23 +11,23 @@ import "./index.scss";
 const styles = (theme) => ({
   "@global": {
     html: {
-      fontSize: 10,
+      fontSize: 8.5,
       scrollBehavior: "smooth",
 
       [theme.breakpoints.up("sd")]: {
-        fontSize: 11,
+        fontSize: 9.5,
       },
       [theme.breakpoints.up("MacScaled")]: {
-        fontSize: 11,
+        fontSize: 9.5,
       },
       [theme.breakpoints.up("md")]: {
-        fontSize: 12,
+        fontSize: 10.5,
       },
       [theme.breakpoints.up("lg")]: {
-        fontSize: 15,
+        fontSize: 13.5,
       },
       [theme.breakpoints.up("xl")]: {
-        fontSize: 20,
+        fontSize: 18.5,
       },
     },
     body: {
@@ -39,7 +39,7 @@ const styles = (theme) => ({
 window.addEventListener("DOMContentLoaded", (event) => {
   let item = document.getElementById("parentScroll");
   let options = {
-    damping: 0.06,
+    damping: 0.03,
   };
   Scrollbar.init(item, options);
 });
@@ -63,7 +63,7 @@ ReactDOM.render(
   <CssBaseline>
     <ThemeProvider theme={theme}>
       <StylesProvider>
-        <Box id="parentScroll" style={{ height: "100vh", width: "100vw" }}>
+        <Box style={{ height: "100vh", width: "100vw" }}>
           <Main />
         </Box>
       </StylesProvider>

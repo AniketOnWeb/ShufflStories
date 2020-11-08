@@ -244,6 +244,15 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "400",
     color: theme.colorPreset.highEmphasis,
     // textAlign: "center",
+
+    // "&::before": {
+    //   position: "absolute",
+    //   content: "''",
+    //   height: "100%",
+    //   width: "100%",
+    //   zIndex: -1,
+    //   boxShadow: "1rem 1rem black",
+    // },
   },
   subText: {
     lineHeight: "5.5rem",
@@ -333,6 +342,9 @@ const useStyles = makeStyles((theme) => ({
     overflowY: "auto",
     maxHeight: "28rem",
   },
+  scrollShadow: {
+    // boxShadow: "1rem 1rem black",
+  },
 }));
 const Hero = () => {
   const theme = useTheme();
@@ -356,24 +368,43 @@ const Hero = () => {
     // getStoriesAPI();
   }, []);
 
-  const getStoriesAPI = () => {
+  const getStoriesAPI = async () => {
     setgetStories(true);
-    app
+    // app
+    //   .firestore()
+    //   .collection("Projects")
+    //   .get()
+    //   .then((querySnapshot) => {
+    //     querySnapshot.forEach((doc) => {
+    //       // console.log(`${doc.id} => ${doc.data()}`);
+    //       if (doc.id === "dV1ywcqzRCNbJvHBr7mP") {
+    //         setStory(doc.data().story ? doc.data().story : "");
+    //         setOccupation(doc.data().occupation ? doc.data().occupation : "");
+    //         setAge(doc.data().age ? doc.data().age : "");
+    //         setName(doc.data() ? doc.data().name : "");
+    //       }
+    //       setgetStories(false);
+    //     });
+    //   });
+
+    const getDoc = app
       .firestore()
       .collection("Projects")
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          // console.log(`${doc.id} => ${doc.data()}`);
-          if (doc.id === "dV1ywcqzRCNbJvHBr7mP") {
-            setStory(doc.data().story ? doc.data().story : "");
-            setOccupation(doc.data().occupation ? doc.data().occupation : "");
-            setAge(doc.data().age ? doc.data().age : "");
-            setName(doc.data() ? doc.data().name : "");
-          }
-          setgetStories(false);
-        });
-      });
+      .doc("dV1ywcqzRCNbJvHBr7mP");
+
+    const doc = await getDoc.get();
+
+    if (!doc.exists) {
+      setgetStories(false);
+      console.log("does not exists");
+    } else {
+      console.log(doc, doc.data());
+      setgetStories(false);
+      setStory(doc.data().story ? doc.data().story : "");
+      setOccupation(doc.data().occupation ? doc.data().occupation : "");
+      setAge(doc.data().age ? doc.data().age : "");
+      setName(doc.data() ? doc.data().name : "");
+    }
   };
 
   const [animateHeart, setAnimateHeart] = useState(true);
@@ -389,8 +420,9 @@ const Hero = () => {
   return (
     <React.Fragment>
       <Box className={classes.heroContainer}>
+        <Box className={classes.scrollShadow}></Box>
         <Box padding="0 27.2rem" className={classes.heroWrapper}>
-          <Box className={classes.storyContainer}>
+          <Box className={classes.storyContainer} id="parentScroll">
             <Typography className={classes.heroText}>
               {Story
                 ? `“${Story}“`

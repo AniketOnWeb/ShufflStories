@@ -185,18 +185,53 @@ const Form = () => {
     //       Firebase.register({ name: Name });
     //     }
     //   });
-
-    await Firebase.submitStory({
-      name: Name,
-      age: Age,
-      story: Story,
-      occupation: Occupation,
-    });
-
-    setName("");
-    setAge("");
-    setOccupation("");
-    setStory("");
+    // await Firebase.submitStory({
+    //   name: Name,
+    //   age: Age,
+    //   story: Story,
+    //   occupation: Occupation,
+    // });
+    // setName("");
+    // setAge("");
+    // setOccupation("");
+    // setStory("");
+    //   const generateRandom = (req, res, next) => {
+    //     const max = 5;
+    //     let random = [];
+    //     for (let i = 0; i < max; i++) {
+    //       let temp = Math.floor(Math.random() * max + 1);
+    //       if (random.indexOf(temp) === -1 && temp !== 0) {
+    //         random.push(temp);
+    //       } else i--;
+    //     }
+    //     req.randomArray = random;
+    //     return next();
+    //   };
+    //   let EasySET = [];
+    //   let MediumSET = [];
+    //   let HardSET = [];
+    //   let random = req.randomArray;
+    //   Promise.all([
+    //     app
+    //       .firestore()
+    //       .collection("QuestionCollection/Easy/QuestionsData")
+    //       .where("id", "in", [...random])
+    //       .get()
+    //       .then((snapshot) => {
+    //         snapshot.forEach((document) => {
+    //           EasySET.push(document.data());
+    //         });
+    //       })
+    //       .catch((err) => {
+    //         console.error(err);
+    //         res.status(500).json(err);
+    //       }),
+    //   ]);
+    //   db.collection("QuestionCollection/Easy/QuestionsData")
+    //     .where("id", "in", [3, 5, 2, 4, 1])
+    //     .get();
+    //   //This query will search for
+    //   //documents with id field having values above in the array.
   };
 
   return (

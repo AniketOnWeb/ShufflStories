@@ -71,14 +71,6 @@ const App = (props) => {
 
   const [showLoader, setshowLoader] = useState(true);
 
-  useEffect(() => {
-    let item = document.getElementById("parentScroll");
-    let options = {
-      damping: 0.06,
-    };
-    Scrollbar.init(item, options);
-  }, []);
-
   const AnimatedBox = animated(Box);
 
   const HeroSpring = useSpring({
