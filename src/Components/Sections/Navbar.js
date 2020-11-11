@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.colorPreset.highEmphasis,
     fontWeight: "500",
     transition: "all .1s ease-in-out",
+    fontFamily: "Libre Baskerville, sans serrif",
   },
   navbarOptions: {
     cursor: "pointer",
