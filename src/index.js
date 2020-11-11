@@ -3,7 +3,6 @@ import { withStyles } from "@material-ui/core/styles";
 import { StylesProvider, ThemeProvider } from "@material-ui/styles";
 import React from "react";
 import ReactDOM from "react-dom";
-import Scrollbar from "smooth-scrollbar";
 import App from "./App";
 import theme from "./Config/theme";
 import "./index.scss";
@@ -34,14 +33,6 @@ const styles = (theme) => ({
       backgroundColor: theme.colorPreset.base,
     },
   },
-});
-
-window.addEventListener("DOMContentLoaded", (event) => {
-  let item = document.getElementById("parentScroll");
-  let options = {
-    damping: 0.03,
-  };
-  Scrollbar.init(item, options);
 });
 
 const Main = withStyles(styles)(App);

@@ -4,7 +4,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { animated, config, useSpring } from "react-spring";
-import Scrollbar from "smooth-scrollbar";
+
 import Hero from "./Components/Pages/Hero";
 import Navbar from "./Components/Sections/Navbar";
 import Footer from "./Components/Sections/Footer";

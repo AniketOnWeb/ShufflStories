@@ -285,7 +285,7 @@ const Form = () => {
                         lineHeight: "3rem",
                       }}
                     >
-                      Genarate Random Names
+                      Generate Random Names
                     </Typography>
                     <Box ml=".8rem">
                       <CustomSvg
