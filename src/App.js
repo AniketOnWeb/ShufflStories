@@ -1,15 +1,21 @@
-import { Box, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
+import {
+  Box,
+  makeStyles,
+  useMediaQuery,
+  useTheme,
+  Button,
+} from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/styles";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { animated, config, useSpring } from "react-spring";
-
-import Hero from "./Components/Pages/Hero";
-import Navbar from "./Components/Sections/Navbar";
-import Footer from "./Components/Sections/Footer";
-import Form from "./Components/Pages/Form";
 import Congrats from "./Components/Pages/Congrats";
+import Form from "./Components/Pages/Form";
+import Hero from "./Components/Pages/Hero";
+import Footer from "./Components/Sections/Footer";
+import Navbar from "./Components/Sections/Navbar";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   heroBackground: {
@@ -64,22 +70,48 @@ const useStyles = makeStyles((theme) => ({
 const App = (props) => {
   const theme = useTheme();
   const classes = useStyles(theme);
-  const matches1280 = useMediaQuery("(min-width:1280px)");
-  const matches1024 = useMediaQuery("(min-width:1024px)");
-  const matches768 = useMediaQuery("(min-width:768px)");
-  const matches640 = useMediaQuery("(min-width:640px)");
-
-  const [showLoader, setshowLoader] = useState(true);
-
   const AnimatedBox = animated(Box);
 
-  const HeroSpring = useSpring({
-    config: config.slow,
-    delay: 200,
-    opacity: 1,
-    transform: "translateY(0px)",
-    from: { opacity: 0, transform: "translateY(3rem)" },
+  let AxiosInstance = axios.create({
+    baseURL: "http://localhost:8080",
   });
+
+  const sendEmail = async () => {
+    const emailData = {
+      email: "chaudharyaniket16@gmail.com",
+    };
+
+    AxiosInstance.post(
+      `/api`,
+      {
+        ...emailData,
+      },
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    );
+  };
+
+  //   Send(userData) {
+  //   let { image } = this.state;
+  //   userData = { ...userData, image };
+  //   this.sendEmail(userData)
+  //     .then((submited) => {
+  //       console.log("Email sent successfully");
+  //     })
+  //     .catch((errors) => {
+  //       console.log("Error occured");
+  //     });
+  // }
+  // sendEmail = async (emailData) => {
+  //   console.log(emailData);
+  //   return axios.post("/api/v1/contact", emailData).then(
+  //     (res) => res.data,
+  //     (err) => Promise.reject(err.response.data.errors)
+  //   );
+  // };
 
   return (
     <CssBaseline>
@@ -102,7 +134,7 @@ const App = (props) => {
                 <AnimatedBox>
                   <Navbar />
                 </AnimatedBox>
-
+                <Button onClick={() => sendEmail()}>asdasdsd</Button>
                 <AnimatedBox>
                   <Hero />
                 </AnimatedBox>
@@ -129,17 +161,3 @@ const App = (props) => {
 };
 
 export default App;
-
-// style={{
-//                 width: "100%",
-//                 maxWidth: matches1280
-//                   ? "1280px"
-//                   : matches1024
-//                   ? "1024px"
-//                   : matches768
-//                   ? "768px"
-//                   : matches640
-//                   ? "640px"
-//                   : "",
-//                 width: "100%",
-//               }}

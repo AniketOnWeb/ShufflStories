@@ -1,6 +1,7 @@
 {
   "name": "Shuffl",
   "version": "1.0.0",
+  "proxy": "http://localhost:8080",
   "scripts": {
     "dev": "parcel src/index.html",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
@@ -34,8 +35,15 @@
     "async": "^3.2.0",
     "axios": "^0.19.2",
     "babel-polyfill": "^6.26.0",
+    "body-parser": "^1.19.0",
+    "connect-redis": "^5.0.0",
+    "cors": "^2.8.5",
     "dotenv": "^6.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "firebase": "^7.24.0",
+    "nodemailer": "^6.4.16",
+    "nodemailer-mailgun-transport": "^2.0.1",
     "parcel-bundler": "^1.12.4",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
@@ -51,6 +59,7 @@
     "react-transition-group": "^4.4.1",
     "sass": "^1.23.7",
     "smooth-scrollbar": "^8.5.3",
+    "smtp": "^0.1.4",
     "styled-components": "^4.4.1",
     "unique-names-generator": "^4.3.1"
   },

@@ -131,6 +131,7 @@ const Hero = () => {
   const [Occupation, setOccupation] = useState("");
   const [Story, setStory] = useState("");
   const [maxHeightReached, setmaxHeightReached] = useState(false);
+  const [StoriesArray, setStoriesArray] = useState([]);
 
   useEffect(() => {
     // getStoriesAPI();
@@ -139,21 +140,54 @@ const Hero = () => {
   const getStoriesAPI = async () => {
     setgetStories(true);
 
-    const getDoc = app
-      .firestore()
-      .collection("Projects")
-      .doc("dV1ywcqzRCNbJvHBr7mP");
+    // const getDoc = app
+    //   .firestore()
+    //   .collection("Projects")
+    //   .doc("dV1ywcqzRCNbJvHBr7mP");
 
-    const doc = await getDoc.get();
+    // const doc = await getDoc.get();
 
-    if (!doc.exists) {
+    // if (!doc.exists) {
+    //   setgetStories(false);
+    // } else {
+    //   setgetStories(false);
+    //   setStory(doc.data().story ? doc.data().story : "");
+    //   setOccupation(doc.data().occupation ? doc.data().occupation : "");
+    //   setAge(doc.data().age ? doc.data().age : "");
+    //   setName(doc.data() ? doc.data().name : "");
+    // }
+
+    if (StoriesArray.length > 0) {
+      let item = StoriesArray[Math.floor(Math.random() * StoriesArray.length)];
+      setStory(item.story ? item.story : "");
+      setOccupation(item.occupation ? item.occupation : "");
+      setAge(item.age ? item.age : "");
+      setName(item ? item.name : "");
+
+      setTimeout(() => {
+        setgetStories(false);
+      }, 100);
+    }
+
+    if (StoriesArray.length === 0) {
+      let tempArr = [];
+
+      const snapshot = await app
+        .firestore()
+        .collection("Projects")
+        .get();
+      snapshot.docs.map((doc) => {
+        tempArr.push(doc.data());
+      });
+      let item = tempArr[Math.floor(Math.random() * tempArr.length)];
+      console.log(item);
       setgetStories(false);
-    } else {
-      setgetStories(false);
-      setStory(doc.data().story ? doc.data().story : "");
-      setOccupation(doc.data().occupation ? doc.data().occupation : "");
-      setAge(doc.data().age ? doc.data().age : "");
-      setName(doc.data() ? doc.data().name : "");
+      setStory(item.story ? item.story : "");
+      setOccupation(item.occupation ? item.occupation : "");
+      setAge(item.age ? item.age : "");
+      setName(item ? item.name : "");
+
+      setStoriesArray(tempArr);
     }
   };
 
@@ -188,7 +222,10 @@ const Hero = () => {
 
   var target = document.querySelector(".scroll-content");
   if (target) {
-    observer.observe(target, { attributes: true, attributeFilter: ["style"] });
+    observer.observe(target, {
+      attributes: true,
+      attributeFilter: ["style"],
+    });
   }
 
   return (
