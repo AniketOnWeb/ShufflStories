@@ -134,7 +134,7 @@ const App = (props) => {
                 <AnimatedBox>
                   <Navbar />
                 </AnimatedBox>
-                <Button onClick={() => sendEmail()}>asdasdsd</Button>
+                {/* <Button onClick={() => sendEmail()}>asdasdsd</Button> */}
                 <AnimatedBox>
                   <Hero />
                 </AnimatedBox>
