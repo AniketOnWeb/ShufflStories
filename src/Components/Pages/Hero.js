@@ -111,7 +111,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
   },
   scrollShadow: {
-    height: "13rem",
+    height: "7rem",
     width: "calc(100% - 27.2rem)",
     zIndex: 99999,
     background:
@@ -120,6 +120,7 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
   },
 }));
+
 const Hero = () => {
   const theme = useTheme();
   const classes = useStyles(theme);
@@ -194,7 +195,7 @@ const Hero = () => {
   React.useEffect(() => {
     let item = document.getElementById("parentScroll");
     let options = {
-      damping: 0.01,
+      damping: 0.08,
       thumbMinSize: 10,
     };
     Scrollbar.init(item, options);

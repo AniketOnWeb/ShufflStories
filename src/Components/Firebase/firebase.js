@@ -6,14 +6,14 @@ import "firebase/remote-config";
 import "babel-polyfill";
 
 const config = {
-  apiKey: "AIzaSyAKm2FbTsGx3syCeDcQjgLuwPsurpzWZOs",
-  authDomain: "shuffl-c277b.firebaseapp.com",
-  databaseURL: "https://shuffl-c277b.firebaseio.com",
-  projectId: "shuffl-c277b",
-  storageBucket: "shuffl-c277b.appspot.com",
-  messagingSenderId: "778145343796",
-  appId: "1:778145343796:web:cbf5bb74eb745a1fc71d61",
-  measurementId: "G-96W0DF17L3",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APREACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGE_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 class Firebase {

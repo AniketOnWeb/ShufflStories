@@ -59,7 +59,12 @@ const Navbar = (props) => {
     <>
       <Box className={classes.navbarWrapper}>
         <Box display="flex" flexDirection="row" alignItems="center">
-          <Box display="flex" flexDirection="row" alignItems="center">
+          <Box
+            display="flex"
+            flexDirection="row"
+            alignItems="center"
+            onClick={() => props.history.push("/")}
+          >
             <Typography className={classes.brandName}>shuffl;</Typography>
           </Box>
         </Box>

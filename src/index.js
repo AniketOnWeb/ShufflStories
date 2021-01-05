@@ -6,11 +6,11 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import theme from "./Config/theme";
 import "./index.scss";
-
+import brutaskBG from "./Assets/brutaskBG.png";
 const styles = (theme) => ({
   "@global": {
     html: {
-      fontSize: 8.5,
+      fontSize: 8,
       scrollBehavior: "smooth",
 
       [theme.breakpoints.up("sd")]: {
@@ -31,24 +31,22 @@ const styles = (theme) => ({
     },
     body: {
       backgroundColor: theme.colorPreset.base,
+      position: "relative",
+
+      "&::before": {
+        position: "fixed",
+        content: "''",
+        height: "100%",
+        width: "100%",
+        backgroundImage: `url(${brutaskBG})`,
+        zIndex: -10,
+        opacity: ".2",
+      },
     },
   },
 });
 
 const Main = withStyles(styles)(App);
-
-const useStyles = makeStyles((theme) => ({
-  navbarWrapper: {
-    display: "flex",
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "100vh",
-    backgroundColor: "#fff",
-    zIndex: 9,
-    position: "fixed",
-  },
-}));
 
 ReactDOM.render(
   <CssBaseline>

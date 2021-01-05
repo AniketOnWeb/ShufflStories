@@ -86,8 +86,6 @@ const useInputFieldClasses = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
     minHeight: "inherit",
-    transition:
-      "background-color 80ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 80ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
     borderRadius: "1.2rem",
     "& label": {
       transform: "none",
@@ -96,8 +94,16 @@ const useInputFieldClasses = makeStyles((theme) => ({
     backgroundColor: "rgb(255 255 255 / 3%)",
     alignItems: "inherit",
     display: "flex",
+    transition: "100ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+    transitionProperty: "color, box-shadow, background, border-color",
+    border: "0.2rem solid transparent",
   },
 
+  focused: {
+    backgroundColor: "#343434",
+    boxShadow: `0 0 0 0.3rem rgb(255 255 255 / 6%)`,
+    borderColor: "rgb(255 255 255 / 3%)",
+  },
   input: {
     fontSize: "2rem !important",
     lineHeight: "3rem",
@@ -393,8 +399,8 @@ const Form = () => {
             </Button>
           </Box>
         </Box>
-        <Box alignSelf="flex-end">
-          <CustomSvg type="formSVG" width="53rem" />
+        <Box ml="1.4rem">
+          <CustomSvg type="formSVG" width="31vw" />
         </Box>
       </Box>
     </Box>
